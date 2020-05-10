@@ -11,11 +11,11 @@ from resources.store import Store,StoreList
 from resources.home import HomePage
 
 def create_app():
-    app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] =  False
-    app.secret_key = os.environ.get('SECRET_KEY')
-    return app
+    app1 = Flask(__name__)
+    app1.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+    app1.config['SQLALCHEMY_TRACK_MODIFICATIONS'] =  False
+    app1.secret_key = os.environ.get('SECRET_KEY')
+    return app1
 
 app = create_app()
 api = Api(app)
