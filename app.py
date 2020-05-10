@@ -8,6 +8,7 @@ from security import authenticate, identity
 from resources.user import UserRegister
 from resources.item import Item,ItemList
 from resources.store import Store,StoreList
+from resources.home import HomePage
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
@@ -22,6 +23,7 @@ api.add_resource(ItemList, '/items')
 api.add_resource(UserRegister, '/register')
 api.add_resource(Store, '/store/<string:name>')
 api.add_resource(StoreList, '/stores')
+api.add_resource(HomePage,'/')
 
 if __name__ == '__main__':
     from db import db

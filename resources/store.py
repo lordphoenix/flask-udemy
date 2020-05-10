@@ -12,6 +12,7 @@ class Store(Resource):
             return store.json()
         return {'message': 'Store not found'}, 404
     
+    @jwt_required()
     def post(self,name):
         if StoreModel.find_by_name(name):
             return {"message" : "An store with name {} already exisits".format(name)}, 400
@@ -22,6 +23,7 @@ class Store(Resource):
             return {"message" : "An error occured while inserting the store"}, 500
         return store.json(),201
     
+    @jwt_required()
     def delete(self, name):
         item = ItemModel.find_by_name(name)
         if item:    
@@ -29,5 +31,6 @@ class Store(Resource):
         return {'message' : 'Item has been deleted'}
 
 class StoreList(Resource):
+    @jwt_required()
     def get(self):
         return {'stores' : [store.json() for store in StoreModel.query.all()]}
