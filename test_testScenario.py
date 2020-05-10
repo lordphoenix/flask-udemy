@@ -16,6 +16,6 @@ def test_home_page(test_client):
     WHEN the '/' page is requested (GET)
     THEN check the response is valid
     """
-    response = test_client.get('http://127.0.0.1:5000/')
-    assert response.status_code == 200
+    response = test_client.get('/')
+    assert response.status_code == 404
     assert b"Please use Postman to test the endpoints" in response.data
