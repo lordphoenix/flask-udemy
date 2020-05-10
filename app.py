@@ -10,10 +10,14 @@ from resources.item import Item,ItemList
 from resources.store import Store,StoreList
 from resources.home import HomePage
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] =  False
-app.secret_key = os.environ.get('SECRET_KEY')
+def create_app():
+    app = Flask(__name__)
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] =  False
+    app.secret_key = os.environ.get('SECRET_KEY')
+    return app
+
+app = create_app()
 api = Api(app)
 
 jwt = JWT(app,authenticate,identity) #new endpoint - /auth
@@ -29,3 +33,4 @@ if __name__ == '__main__':
     from db import db
     db.init_app(app)
     app.run(port=5000, debug=True)
+    return app
