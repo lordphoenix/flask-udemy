@@ -1,4 +1,4 @@
 # flask-udemy
-FLASK-UDEMY
+FLASK-UDEMY - integration
 
 [![Build Status](https://travis-ci.com/lordphoenix/flask-udemy.svg?branch=master)](https://travis-ci.com/lordphoenix/flask-udemy)
